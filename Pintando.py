@@ -37,6 +37,7 @@ def rectangle(start, end): # definimos el proceso para crear el rectángulo
         left(90) # gira 90 grados.
     end_fill() # Se termina de llenar el RECTÁNGULO, una vez que ya esta completamente cerrado.
   
+def triangle(start, end): # definimos el proceso para crear el TRIÁNGULO
     "Draw triangle from start to end."
     for count in range(3): # Ciclo pata los lados del TRIÁNGULO (3).
           forward(end.x - start.x) # Hacemos la distancia que seran los lados del TRIÁNGULO.
