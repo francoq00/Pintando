@@ -1,5 +1,7 @@
 import turtle as t # Importamos el programa de turtle.
 from turtle import * # de turtle importamos * en especifico.
+from freegames import vector # de Freegames importamos vector.
+
 
 def line(start, end): # Definimos el proceso para hacer lineas
     "Draw line from start to end."
@@ -21,7 +23,10 @@ def square(start, end): # Definimos el proceso para hacer un cuadrado
 
     end_fill() # Se termina de llenar el cuadrado, una vez que ya esta completamente cerrado.
 
-def circle(start, end): # definimos el proceso para hacer el ciculo con ayuda de turtle.
+
+
+def circle(start,end): # definimos el proceso para hacer el ciculo con ayuda de turtle.
+
     "Draw circle from start to end."
     up() # Se levanta la pluma para que No dibuje nada.
     goto(start.x, start.y) # Nos movemos a donde se de click en el mouse.
@@ -29,6 +34,7 @@ def circle(start, end): # definimos el proceso para hacer el ciculo con ayuda de
     down() # Bajamos la pluma para que ahora si dibuje la trayectoria.
     t.circle(radio) # turtle tiene la fucnion para hacer un circulo, nosotros solo le definimos la medida.
     
+
 
 def rectangle(start, end): # definimos el proceso para crear el rectángulo
     for count in range(4): # Ciclo para los lados del RECTÁNGULO (4).
@@ -77,4 +83,6 @@ onkey(lambda: store('shape', square), 's') # En este punto se declara que al pre
 onkey(lambda: store('shape', circle), 'c') # En este punto se declara que al presionar la tecla c minuscula, la froma (funcion) que haga sea un circulo.
 onkey(lambda: store('shape', rectangle), 'r') # En este punto se declara que al presionar la tecla r minuscula, la froma (funcion) que haga sea un rectangulo.
 onkey(lambda: store('shape', triangle), 't') # En este punto se declara que al presionar la tecla t minuscula, la froma (funcion) que haga sea un triangulo.
+
 done()# cerramos el listen
+
