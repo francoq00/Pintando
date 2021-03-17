@@ -22,7 +22,7 @@ def square(start, end): # Definimos el proceso para hacer un cuadrado
 
     end_fill() # Se termina de llenar el cuadrado, una vez que ya esta completamente cerrado.
 
-def circle(start, end): # definimos el proceso para hacer el ciculo con ayuda de turtle.
+def circle(start,end): # definimos el proceso para hacer el ciculo con ayuda de turtle.
     "Draw circle from start to end."
     up() # Se levanta la pluma para que No dibuje nada.
     goto(start.x, start.y) # Nos movemos a donde se de click en el mouse.
@@ -30,7 +30,6 @@ def circle(start, end): # definimos el proceso para hacer el ciculo con ayuda de
     down() # Bajamos la pluma para que ahora si dibuje la trayectoria.
     t.circle(radio) # turtle tiene la fucnion para hacer un circulo, nosotros solo le definimos la medida.
     
-
 def rectangle(start, end):
     "Draw rectangle from start to end."
     pass  # TODO
