@@ -1,29 +1,35 @@
-from turtle import *
-from freegames import vector
+import turtle as t # Importamos el programa de turtle.
+from turtle import * # de turtle importamos * en especifico.
+from freegames import vector # de Freegames importamos vector.
 
-def line(start, end):
+def line(start, end): # Definimos el proceso para hacer lineas
     "Draw line from start to end."
-    up()
-    goto(start.x, start.y)
-    down()
-    goto(end.x, end.y)
+    up() # Se levanta la pluma para que No dibuje nada.
+    goto(start.x, start.y) # Nos movemos a donde se de click en el mouse.
+    down() # Bajamos la pluma para que ahora si dibuje la trayectoria.
+    goto(end.x, end.y) # Nos movemos a donde se de click en el mouse (Ya con la trayectoria marcada).
 
-def square(start, end):
+def square(start, end): # Definimos el proceso para hacer un cuadrado
     "Draw square from start to end."
-    up()
-    goto(start.x, start.y)
-    down()
-    begin_fill()
+    up() # Se levanta la pluma para que No dibuje nada.
+    goto(start.x, start.y) # Se levanta la pluma para que No dibuje nada.
+    down() # Bajamos la pluma para que ahora si dibuje la trayectoria.
+    begin_fill() # Se empieza a llenar el cuadrado.
 
-    for count in range(4):
-        forward(end.x - start.x)
-        left(90)
+    for count in range(4): # Ciclo pata los lados del cuadrado (4).
+        forward(end.x - start.x) # Hacemos la distancia que seran los lados del cuadrado.
+        left(90) # gira 90 grados.
 
-    end_fill()
+    end_fill() # Se termina de llenar el cuadrado, una vez que ya esta completamente cerrado.
 
-def circle(start, end):
+def circle(start, end): # definimos el proceso para hacer el ciculo con ayuda de turtle.
     "Draw circle from start to end."
-    pass  # TODO
+    up() # Se levanta la pluma para que No dibuje nada.
+    goto(start.x, start.y) # Nos movemos a donde se de click en el mouse.
+    radio = end.x-start.x # Definimos la distamcia del circulo.
+    down() # Bajamos la pluma para que ahora si dibuje la trayectoria.
+    t.circle(radio) # turtle tiene la fucnion para hacer un circulo, nosotros solo le definimos la medida.
+    
 
 def rectangle(start, end):
     "Draw rectangle from start to end."
@@ -33,35 +39,36 @@ def triangle(start, end):
     "Draw triangle from start to end."
     pass  # TODO
 
-def tap(x, y):
+def tap(x, y): # Se define la funcion para que el pograma, sepa de donde a donde estamos tocando el mouse.
     "Store starting point or draw shape."
-    start = state['start']
+    start = state['start'] # Se empieza desde el principio.
 
-    if start is None:
-        state['start'] = vector(x, y)
-    else:
-        shape = state['shape']
-        end = vector(x, y)
-        shape(start, end)
-        state['start'] = None
+    if start is None: # cuando el inicio sea ninguno
+        state['start'] = vector(x, y) # el estado sera el vector en x,y.
+    else: # si no
+        shape = state['shape'] # definimos el tamaño desde el principio.
+        end = vector(x, y) # se acabara en la pocicion de x,y.
+        shape(start, end) # definimos que el tamaño sera desde el principio hasta el fin.
+        state['start'] = None # se acaba.
 
-def store(key, value):
+def store(key, value): # definimso que el valor de la flecha es en la pocicion donde se de clic.
     "Store value in state at key."
     state[key] = value
 
-state = {'start': None, 'shape': line}
+state = {'start': None, 'shape': line} # Empezamos con la forma de una linea, 
 setup(420, 420, 370, 0)
-onscreenclick(tap)
-listen()
-onkey(undo, 'u')
-onkey(lambda: color('black'), 'K')
-onkey(lambda: color('white'), 'W')
-onkey(lambda: color('green'), 'G')
-onkey(lambda: color('blue'), 'B')
-onkey(lambda: color('red'), 'R')
-onkey(lambda: store('shape', line), 'l')
-onkey(lambda: store('shape', square), 's')
-onkey(lambda: store('shape', circle), 'c')
-onkey(lambda: store('shape', rectangle), 'r')
-onkey(lambda: store('shape', triangle), 't')
-done()
+onscreenclick(tap) # definimos que funcionara con un tap del mouse en el canvas de el programa.
+listen() # empezamos el listen
+onkey(undo, 'u') # si se teclea la tecla u minuscula, se va a deshacer el trazo previo.
+onkey(lambda: color('cyan'), 'C') # En este punto agregue el color cyan al codigo al presionar la tecla C Mayscula.
+onkey(lambda: color('black'), 'K') # En este punto se declara el color negro al codigo al presionar la tecla K Mayscula.
+onkey(lambda: color('white'), 'W') # En este punto se declara el color blanco al codigo al presionar la tecla W Mayscula.
+onkey(lambda: color('green'), 'G') # En este punto se declara el color verde al codigo al presionar la tecla G Mayscula.
+onkey(lambda: color('blue'), 'B') # En este punto se declara el color azul al codigo al presionar la tecla B Mayscula.
+onkey(lambda: color('red'), 'R') # En este punto se declara el color rojo al codigo al presionar la tecla R Mayscula.
+onkey(lambda: store('shape', line), 'l') # En este punto se declara que al presionar la tecla l minuscula, la froma (funcion) que haga sea la de una linea.
+onkey(lambda: store('shape', square), 's') # En este punto se declara que al presionar la tecla s minuscula, la froma (funcion) que haga sea un cuadrado.
+onkey(lambda: store('shape', circle), 'c') # En este punto se declara que al presionar la tecla c minuscula, la froma (funcion) que haga sea un circulo.
+onkey(lambda: store('shape', rectangle), 'r') # En este punto se declara que al presionar la tecla r minuscula, la froma (funcion) que haga sea un rectangulo.
+onkey(lambda: store('shape', triangle), 't') # En este punto se declara que al presionar la tecla t minuscula, la froma (funcion) que haga sea un triangulo.
+done()# cerramos el listen
